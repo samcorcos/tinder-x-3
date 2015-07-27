@@ -1,12 +1,13 @@
+React.initializeTouchEvents(true);
+
 Home = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
+    let handle = Meteor.subscribe('dummyData');
     return {
-
+      dummyDataLoading: ! handle.ready(),
+      dummyData: DummyData.find().fetch()
     }
-  },
-  moveCard(x,y) {
-    console.log("Card is moving");
   },
   getInitialState() {
     return {
@@ -14,17 +15,19 @@ Home = React.createClass({
     }
   },
   render() {
-    return (
-      <div>
-        <div className="list card tinder-card" onClick={this.moveCard()}>
-          <div className="item item-avatar">
-            <img src="https://avatars0.githubusercontent.com/u/1794527?v=3&s=460" />
-            <h2>Title of card</h2>
-            <p>Content of card</p>
+    if (this.data.dummyDataLoading) {
+      return <div>Loading...</div>;
+    }
+    let list = this.data.dummyData.map(function(item) {
+      return (
+        <div className="list card tinder-card" key={item._id}>
+          <div className="item">
+            <h2>{item.name}</h2>
+            <p>{item.description}</p>
           </div>
 
           <div className="item item-image">
-            <img src="https://avatars0.githubusercontent.com/u/1794527?v=3&s=460" />
+            <img src={item.image} />
           </div>
 
           <div className="item tabs tabs-secondary tabs-icon-left">
@@ -38,6 +41,12 @@ Home = React.createClass({
            </a>
          </div>
         </div>
+      )
+    })
+
+    return (
+      <div>
+        {list}
       </div>
     )
   }
