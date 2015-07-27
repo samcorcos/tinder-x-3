@@ -18,5 +18,5 @@ if (DummyData.find().count() === 0) {
     })
     console.log("inserted");
   }
-  R.forEach(addDummyData, R.range(1,100))
+  R.forEach(addDummyData, R.range(1,10))
 }

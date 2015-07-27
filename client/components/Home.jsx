@@ -14,11 +14,14 @@ Home = React.createClass({
 
     }
   },
+  removeCard() {
+    console.log("removing card");
+  },
   render() {
     if (this.data.dummyDataLoading) {
       return <div>Loading...</div>;
     }
-    let list = this.data.dummyData.map(function(item) {
+    let list = this.data.dummyData.map(function(item, i) {
       return (
         <div className="list card tinder-card" key={item._id}>
           <div className="item">
@@ -32,11 +35,11 @@ Home = React.createClass({
 
           <div className="item tabs tabs-secondary tabs-icon-left">
            <a className="tab-item" href="#">
-             <i className="icon ion-thumbsup balanced"></i>
+             <i className="icon ion-thumbsup balanced" onClick={console.log("rinn")}></i>
              Like
            </a>
            <a className="tab-item" href="#">
-             <i className="icon ion-thumbsdown assertive"></i>
+             <i className="icon ion-thumbsdown assertive" onClick={this.removeCard}></i>
              Dislike
            </a>
          </div>
@@ -45,7 +48,7 @@ Home = React.createClass({
     })
 
     return (
-      <div>
+      <div className="tinder-card-wrapper">
         {list}
       </div>
     )

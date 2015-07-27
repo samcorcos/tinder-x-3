@@ -8,6 +8,17 @@ a.title {
   text-decoration: none;
 }
 
+.tinder-card-wraper {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.tinder-card {
+  position: absolute;
+  top: 20px;
+  left: auto;
+}
 
 .page-transition-enter {
   transition: opacity 0.5s ease;
