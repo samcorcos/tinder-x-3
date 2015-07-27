@@ -5,6 +5,9 @@ Home = React.createClass({
 
     }
   },
+  moveCard(x,y) {
+    console.log("Card is moving");
+  },
   getInitialState() {
     return {
 
@@ -13,7 +16,7 @@ Home = React.createClass({
   render() {
     return (
       <div>
-        <div className="list card">
+        <div className="list card tinder-card" onClick={this.moveCard()}>
           <div className="item item-avatar">
             <img src="https://avatars0.githubusercontent.com/u/1794527?v=3&s=460" />
             <h2>Title of card</h2>
