@@ -17,9 +17,6 @@ Home = React.createClass({
   removeCard() {
     console.log("removing card");
   },
-  moveCard(x,y) {
-
-  },
   render() {
     if (this.data.dummyDataLoading) {
       return <div>Loading...</div>;
